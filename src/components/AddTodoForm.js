@@ -4,15 +4,16 @@ import { addTodo } from "../redux/todoSlice";
 const AddTodoForm = () => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
+  
   const dispatch = useDispatch();
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log("user entered: " + title);
     dispatch(
       addTodo({
         title: title,
-		desc:desc,
+		    description:desc,
+        
       })
     );
   };
@@ -35,7 +36,8 @@ const AddTodoForm = () => {
             type="text"
             id="desc"
             placeholder="Description"
-			onChange={(desc)=> setDesc(desc.target.value)}
+            value={desc}
+			      onChange={(desc)=> setDesc(desc.target.value)}
           />
           <button type="submit" className="btn btn-primary mb-2">
             Submit
